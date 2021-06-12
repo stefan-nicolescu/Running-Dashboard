@@ -105,8 +105,7 @@ p {
 /*hide day of week and name of month*/
 /*when window width < 7500px*/
 @media (max-width: 750px) {
-	.week-day, .month-name-streak,
-	.week-names, .week-values {
+	.week-day, .week-names, .week-values {
 		visibility: hidden;
 	}
 }
