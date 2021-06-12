@@ -96,7 +96,9 @@ p {
 /*when window width < 1000px*/
 @media (max-width: 1000px) {
 	.month-day-streak {
-		visibility: hidden;
+		fill: #000000; /* font color in SVG */
+		font-size: 7px;
+		font-weight: 400;
 	}
 }
 
