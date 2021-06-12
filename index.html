@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+		<title>My Running Statistics</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" 
+		rel="stylesheet"> 
+		<link rel="stylesheet" href="styles/style.css" />	
+		<script src="https://d3js.org/d3.v6.min.js"></script>
+		<script type="text/javascript" src="scripts/runs.js"></script>
+	</head>
+
+	<body>
+		<!-- CSS grid system used to arange charts on the page -->
+		<div class="grid-container"> 
+			<div id="title" title="Track your running progress!">
+				<h1>Goal Tracking: 1000km in 2021</h1>
+			</div>
+			<!-- container for yearly progress donut chart -->
+			<div id="yearly-progress" title="Percentage of Goal Completed">
+				<h2 id="current-year"></h2>
+				<div id="yearly-progress-svg"></div>
+<!-- 		<h4 id="year-done"></h4>
+				<h4 id="year-todo"></h4>
+				<h4 id="average"></h4>
+				<h4 id="count"></h4>
+				<h4 id="total-time"></h4>
+				<h4 id="avg-pace"></h4> -->
+			</div>
+			<!-- container for monthly progress donut chart -->
+			<div id="monthly-progress" title="Percentage of Goal Completed">
+				<h2 id="current-month"></h2>
+				<div id="monthly-progress-svg"></div>
+<!-- 		<h4 id="month-done"></h4>
+				<h4 id="month-todo"></h4>
+				<h4 id="month-average"></h4>
+				<h4 id="month-count"></h4> -->
+			</div>
+			<!-- container for weekly progress donut chart -->
+			<div id="weekly-progress" title="Percentage of Goal Completed">
+				<h2 id="current-week"></h2>
+				<div id="weekly-progress-svg"></div>
+<!-- 		<h4 id="week-done"></h4>
+				<h4 id="week-todo"></h4> -->
+			</div>
+	
+			<!-- container for delta progress line chart -->
+			<div id="delta-progress" title="Stay Above Average to Accomplish Goal">
+				<div id="delta-progress-svg"></div>
+			</div>	
+			
+			<!-- container for monthly distances column chart -->
+			<div id="month-distances" title="Monthly Performance vs Average Needed">
+				<h2>Monthly Distances (km)</h2>
+				<div id="month-distances-svg"></div>
+			</div>
+			
+			<!-- container for weekly distances column chart -->
+			<div id="week-distances" title="Weekly Performance vs Average Needed">
+				<h2>Weekly Distances (km)</h2>
+				<div id="week-distances-svg"></div>
+			</div>
+			
+			<!-- container for daily streak calendar chart -->
+			<div id="daily-streak" title="Green Means Run">
+				<h2>Calendar View</h2>
+				<div id="daily-streak-svg"></div>
+			</div>
+
+			<!-- container for table -->
+			<div id="table">
+				<h2 id="title-table">Table Runs</h2>
+				<div id="table-data"></div>	
+			</div>
+		</div>
+
+		
+		<!-- needs to be positioned down in the html file because the JS code invokes
+		DOM elements that first need to initialized -->
+		<script type="text/javascript" src="scripts/main.js"></script>
+	</body>
+</html>
