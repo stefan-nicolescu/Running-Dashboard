@@ -1,7 +1,7 @@
 # Running Dashboard
 
 ### Motto
-*If you want to improve it, you have to measure it first!*
+**If you want to improve it, you have to measure it first!**
 Break down a chunky goal into small manageable steps that are not daunting to make. Be consistent!
 
 ### Description and Usage
