@@ -490,7 +490,7 @@ var arrayRuns =
   },
   {
     "id": 62,
-    "date": "2021-06-17",
+    "date": "2021-06-20",
     "distance": 10,
     "time_h": 0,
     "time_m": 54,
