@@ -503,5 +503,53 @@ var arrayRuns =
     "time_h": 0,
     "time_m": 36,
     "time_s": 3 
+  },
+  {
+    "id": 64,
+    "date": "2021-06-29",
+    "distance": 5,
+    "time_h": 0,
+    "time_m": 27,
+    "time_s": 41 
+  },
+  {
+    "id": 65,
+    "date": "2021-06-30",
+    "distance": 7.76,
+    "time_h": 0,
+    "time_m": 48,
+    "time_s": 39 
+  },
+  {
+    "id": 66,
+    "date": "2021-07-03",
+    "distance": 5.01,
+    "time_h": 0,
+    "time_m": 26,
+    "time_s": 41 
+  },
+  {
+    "id": 67,
+    "date": "2021-07-06",
+    "distance": 4.37,
+    "time_h": 0,
+    "time_m": 24,
+    "time_s": 16 
+  },
+  {
+    "id": 68,
+    "date": "2021-07-05",
+    "distance": 12.02,
+    "time_h": 1,
+    "time_m": 9,
+    "time_s": 51 
+  },
+  {
+    "id": 69,
+    "date": "2021-07-11",
+    "distance": 5.13,
+    "time_h": 0,
+    "time_m": 29,
+    "time_s": 50
   }
 ];
