@@ -586,7 +586,7 @@ var arrayRuns =
   },
   {
     "id": 74,
-    "date": "2021-07-25",
+    "date": "2021-07-26",
     "distance": 10,
     "time_h": 1,
     "time_m": 1,
