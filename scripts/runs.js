@@ -551,5 +551,45 @@ var arrayRuns =
     "time_h": 0,
     "time_m": 29,
     "time_s": 50
+  },
+  {
+    "id": 70,
+    "date": "2021-07-18",
+    "distance": 4.03,
+    "time_h": 0,
+    "time_m": 22,
+    "time_s": 37
+  },
+  {
+    "id": 71,
+    "date": "2021-07-20",
+    "distance": 10.0,
+    "time_h": 0,
+    "time_m": 57,
+    "time_s": 24
+  },
+  {
+    "id": 72,
+    "date": "2021-07-23",
+    "distance": 5.02,
+    "time_h": 0,
+    "time_m": 27,
+    "time_s": 13
+  },
+  {
+    "id": 73,
+    "date": "2021-07-25",
+    "distance": 10,
+    "time_h": 0,
+    "time_m": 57,
+    "time_s": 4
+  },
+  {
+    "id": 74,
+    "date": "2021-07-25",
+    "distance": 10,
+    "time_h": 1,
+    "time_m": 1,
+    "time_s": 2
   }
 ];
