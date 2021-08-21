@@ -624,8 +624,7 @@ var arrayRuns =
     "time_m": 42,
     "time_s": 20
   },
-    },
-    {
+  {
     "id": ,
     "date": "2021-08-13",
     "distance": 4.35,
