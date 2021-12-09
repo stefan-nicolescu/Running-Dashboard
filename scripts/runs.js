@@ -727,8 +727,8 @@ var arrayRuns =
     "time_h": 1,
     "time_m": 4,
     "time_s": 49
-  }
-    {
+  },
+  {
     "id": 91,
     "date": "2021-09-29",
     "distance": 14.02,
