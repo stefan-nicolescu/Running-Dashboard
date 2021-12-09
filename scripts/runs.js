@@ -594,7 +594,7 @@ var arrayRuns =
   },
   {
     "id": 75,
-    "date": "2021-08-1",
+    "date": "2021-08-01",
     "distance": 8.78,
     "time_h": 0,
     "time_m": 52,
@@ -602,7 +602,7 @@ var arrayRuns =
   },
   {
     "id": 76,
-    "date": "2021-08-3",
+    "date": "2021-08-03",
     "distance": 5,
     "time_h": 0,
     "time_m": 29,
@@ -610,7 +610,7 @@ var arrayRuns =
   },
   {
     "id": 77,
-    "date": "2021-08-9",
+    "date": "2021-08-09",
     "distance": 6.4,
     "time_h": 0,
     "time_m": 39,
@@ -738,7 +738,7 @@ var arrayRuns =
   },
   {
     "id": 92,
-    "date": "2021-10-3",
+    "date": "2021-10-03",
     "distance": 9,
     "time_h": 0,
     "time_m": 50,
@@ -746,7 +746,7 @@ var arrayRuns =
   },
   {
     "id": 93,
-    "date": "2021-10-5",
+    "date": "2021-10-05",
     "distance": 7.51,
     "time_h": 0,
     "time_m": 44,
@@ -754,7 +754,7 @@ var arrayRuns =
   },
   {
     "id": 94,
-    "date": "2021-10-9",
+    "date": "2021-10-09",
     "distance": 5.02,
     "time_h": 0,
     "time_m": 28,
@@ -810,7 +810,7 @@ var arrayRuns =
   },
   {
     "id": 101,
-    "date": "2021-11-2",
+    "date": "2021-11-02",
     "distance": 3.73,
     "time_h": 0,
     "time_m": 22,
@@ -818,7 +818,7 @@ var arrayRuns =
   },
   {
     "id": 102,
-    "date": "2021-11-4",
+    "date": "2021-11-04",
     "distance": 5.33,
     "time_h": 0,
     "time_m": 30,
@@ -826,7 +826,7 @@ var arrayRuns =
   },
   {
     "id": 103,
-    "date": "2021-11-5",
+    "date": "2021-11-05",
     "distance": 6.03,
     "time_h": 0,
     "time_m": 34,
@@ -834,7 +834,7 @@ var arrayRuns =
   },
   {
     "id": 104,
-    "date": "2021-11-6",
+    "date": "2021-11-06",
     "distance": 7.03,
     "time_h": 0,
     "time_m": 40,
@@ -842,7 +842,7 @@ var arrayRuns =
   },
   {
     "id": 105,
-    "date": "2021-11-7",
+    "date": "2021-11-07",
     "distance": 5.03,
     "time_h": 0,
     "time_m": 28,
@@ -914,7 +914,7 @@ var arrayRuns =
   },
   {
     "id": 114,
-    "date": "2021-12-2",
+    "date": "2021-12-02",
     "distance": 10,
     "time_h": 0,
     "time_m": 59,
@@ -922,7 +922,7 @@ var arrayRuns =
   },
   {
     "id": 115,
-    "date": "2021-12-4",
+    "date": "2021-12-04",
     "distance": 6,
     "time_h": 0,
     "time_m": 33,
@@ -930,7 +930,7 @@ var arrayRuns =
   },
   {
     "id": 116,
-    "date": "2021-12-5",
+    "date": "2021-12-05",
     "distance": 11.18,
     "time_h": 1,
     "time_m": 8,
@@ -938,7 +938,7 @@ var arrayRuns =
   },
   {
     "id": 117,
-    "date": "2021-12-5",
+    "date": "2021-12-05",
     "distance": 11.24,
     "time_h": 1,
     "time_m": 5,
