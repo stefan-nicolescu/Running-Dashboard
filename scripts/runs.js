@@ -501,7 +501,7 @@ var arrayRuns =
     "date": "2021-06-28",
     "distance": 7.75,
     "time_h": 0,
-    "time_m": 36,
+    "time_m": 46,
     "time_s": 3 
   },
   {
