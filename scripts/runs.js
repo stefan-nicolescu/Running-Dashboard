@@ -982,7 +982,7 @@ var arrayRuns =
     "distance": 9.43,
     "time_h": 0,
     "time_m": 55,
-    "time_s": 00
+    "time_s": 0
   },
   {
     "id": 123,
