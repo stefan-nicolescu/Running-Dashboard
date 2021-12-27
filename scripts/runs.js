@@ -682,7 +682,7 @@ var arrayRuns =
   },
   {
     "id": 86,
-    "date": "2021-09-3",
+    "date": "2021-09-03",
     "distance": 10.05,
     "time_h": 1,
     "time_m": 1,
@@ -698,6 +698,14 @@ var arrayRuns =
   },
   {
     "id": 88,
+    "date": "2021-09-15",
+    "distance": 3.01,
+    "time_h": 0,
+    "time_m": 16,
+    "time_s": 34
+  },
+  {
+    "id": 89,
     "date": "2021-09-16",
     "distance": 7.22,
     "time_h": 0,
@@ -705,7 +713,7 @@ var arrayRuns =
     "time_s": 04
   },
   {
-    "id": 89,
+    "id": 90,
     "date": "2021-09-19",
     "distance": 10.00,
     "time_h": 0,
@@ -713,7 +721,7 @@ var arrayRuns =
     "time_s": 19
   },
   {
-    "id": 90,
+    "id": 91,
     "date": "2021-09-22",
     "distance": 5.75,
     "time_h": 0,
@@ -721,7 +729,7 @@ var arrayRuns =
     "time_s": 0
   },
   {
-    "id": 91,
+    "id": 92,
     "date": "2021-09-27",
     "distance": 10.03,
     "time_h": 1,
@@ -729,7 +737,7 @@ var arrayRuns =
     "time_s": 49
   },
   {
-    "id": 91,
+    "id": 93,
     "date": "2021-09-29",
     "distance": 14.02,
     "time_h": 1,
@@ -737,7 +745,7 @@ var arrayRuns =
     "time_s": 47
   },
   {
-    "id": 92,
+    "id": 94,
     "date": "2021-10-03",
     "distance": 9,
     "time_h": 0,
@@ -745,7 +753,7 @@ var arrayRuns =
     "time_s": 20
   },
   {
-    "id": 93,
+    "id": 95,
     "date": "2021-10-05",
     "distance": 7.51,
     "time_h": 0,
@@ -753,7 +761,7 @@ var arrayRuns =
     "time_s": 27
   },
   {
-    "id": 94,
+    "id": 96,
     "date": "2021-10-09",
     "distance": 5.02,
     "time_h": 0,
@@ -761,7 +769,7 @@ var arrayRuns =
     "time_s": 18
   },
   {
-    "id": 95,
+    "id": 97,
     "date": "2021-10-11",
     "distance": 5.02,
     "time_h": 0,
@@ -769,7 +777,7 @@ var arrayRuns =
     "time_s": 3
   },
   {
-    "id": 96,
+    "id": 98,
     "date": "2021-10-14",
     "distance": 5.96,
     "time_h": 0,
@@ -777,7 +785,7 @@ var arrayRuns =
     "time_s": 59
   },
   {
-    "id": 97,
+    "id": 99,
     "date": "2021-10-17",
     "distance": 5.56,
     "time_h": 0,
@@ -785,7 +793,7 @@ var arrayRuns =
     "time_s": 7
   },
   {
-    "id": 98,
+    "id": 100,
     "date": "2021-10-20",
     "distance": 7.19,
     "time_h": 0,
@@ -793,7 +801,7 @@ var arrayRuns =
     "time_s": 18
   },
   {
-    "id": 99,
+    "id": 101,
     "date": "2021-10-27",
     "distance": 5,
     "time_h": 0,
@@ -801,7 +809,7 @@ var arrayRuns =
     "time_s": 00
   },
   {
-    "id": 100,
+    "id": 102,
     "date": "2021-10-31",
     "distance": 9.17,
     "time_h": 0,
@@ -809,7 +817,7 @@ var arrayRuns =
     "time_s": 49
   },
   {
-    "id": 101,
+    "id": 103,
     "date": "2021-11-02",
     "distance": 3.73,
     "time_h": 0,
@@ -817,7 +825,7 @@ var arrayRuns =
     "time_s": 6
   },
   {
-    "id": 102,
+    "id": 104,
     "date": "2021-11-04",
     "distance": 5.33,
     "time_h": 0,
@@ -825,7 +833,7 @@ var arrayRuns =
     "time_s": 28
   },
   {
-    "id": 103,
+    "id": 105,
     "date": "2021-11-05",
     "distance": 6.03,
     "time_h": 0,
@@ -833,7 +841,7 @@ var arrayRuns =
     "time_s": 36
   },
   {
-    "id": 104,
+    "id": 106,
     "date": "2021-11-06",
     "distance": 7.03,
     "time_h": 0,
@@ -841,7 +849,7 @@ var arrayRuns =
     "time_s": 09
   },
   {
-    "id": 105,
+    "id": 107,
     "date": "2021-11-07",
     "distance": 5.03,
     "time_h": 0,
@@ -849,7 +857,7 @@ var arrayRuns =
     "time_s": 28
   },
   {
-    "id": 106,
+    "id": 108,
     "date": "2021-11-10",
     "distance": 5.03,
     "time_h": 0,
@@ -857,7 +865,7 @@ var arrayRuns =
     "time_s": 13
   },
   {
-    "id": 107,
+    "id": 109,
     "date": "2021-11-15",
     "distance": 10.0,
     "time_h": 0,
@@ -865,7 +873,7 @@ var arrayRuns =
     "time_s": 3
   },
   {
-    "id": 108,
+    "id": 110,
     "date": "2021-11-17",
     "distance": 9.5,
     "time_h": 1,
@@ -873,7 +881,7 @@ var arrayRuns =
     "time_s": 26
   },
   {
-    "id": 109,
+    "id": 111,
     "date": "2021-11-19",
     "distance": 3.34,
     "time_h": 0,
@@ -881,7 +889,7 @@ var arrayRuns =
     "time_s": 15
   },
   {
-    "id": 110,
+    "id": 112,
     "date": "2021-11-22",
     "distance": 5,
     "time_h": 0,
@@ -889,7 +897,7 @@ var arrayRuns =
     "time_s": 20
   },
   {
-    "id": 111,
+    "id": 113,
     "date": "2021-11-23",
     "distance": 10,
     "time_h": 0,
@@ -897,7 +905,7 @@ var arrayRuns =
     "time_s": 7
   },
   {
-    "id": 112,
+    "id": 114,
     "date": "2021-11-24",
     "distance": 10,
     "time_h": 1,
@@ -905,7 +913,7 @@ var arrayRuns =
     "time_s": 18
   },
   {
-    "id": 113,
+    "id": 115,
     "date": "2021-11-29",
     "distance": 10,
     "time_h": 0,
@@ -913,7 +921,7 @@ var arrayRuns =
     "time_s": 13
   },
   {
-    "id": 114,
+    "id": 116,
     "date": "2021-12-02",
     "distance": 10,
     "time_h": 0,
@@ -921,7 +929,7 @@ var arrayRuns =
     "time_s": 1
   },
   {
-    "id": 115,
+    "id": 117,
     "date": "2021-12-04",
     "distance": 6,
     "time_h": 0,
@@ -929,7 +937,7 @@ var arrayRuns =
     "time_s": 1
   },
   {
-    "id": 116,
+    "id": 118,
     "date": "2021-12-05",
     "distance": 11.18,
     "time_h": 1,
@@ -937,7 +945,7 @@ var arrayRuns =
     "time_s": 21
   },
   {
-    "id": 117,
+    "id": 119,
     "date": "2021-12-09",
     "distance": 11.24,
     "time_h": 1,
@@ -945,7 +953,7 @@ var arrayRuns =
     "time_s": 31
   },
   {
-    "id": 118,
+    "id": 120,
     "date": "2021-12-12",
     "distance": 10.02,
     "time_h": 1,
@@ -953,7 +961,7 @@ var arrayRuns =
     "time_s": 47
   },
   {
-    "id": 119,
+    "id": 121,
     "date": "2021-12-13",
     "distance": 10.08,
     "time_h": 0,
@@ -961,7 +969,7 @@ var arrayRuns =
     "time_s": 45
   },
   {
-    "id": 120,
+    "id": 122,
     "date": "2021-12-19",
     "distance": 10.0,
     "time_h": 0,
@@ -977,7 +985,7 @@ var arrayRuns =
     "time_s": 35
   },
   {
-    "id": 122,
+    "id": 123,
     "date": "2021-12-24",
     "distance": 9.43,
     "time_h": 0,
@@ -985,7 +993,7 @@ var arrayRuns =
     "time_s": 0
   },
   {
-    "id": 123,
+    "id": 124,
     "date": "2021-12-26",
     "distance": 11.07,
     "time_h": 1,
