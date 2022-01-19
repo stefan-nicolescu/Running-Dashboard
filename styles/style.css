@@ -1,4 +1,3 @@
-
 /*--------------CSS FILE RULES--------------*/
 
 /*
@@ -16,472 +15,493 @@ sort alphabetically.
 6. Be consistent with letter case in color codes (uppercase).		
 */
 
-
 /*--------------GENERAL SELECTORS--------------*/
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
-	font-family: 'Ubuntu', sans-serif;
-	font-style: normal;
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
 }
 
 /* dashboard title */
 h1 {
-	font-size: 22px;
-	font-weight: 500;
-	text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  text-align: center;
+  /* border: 1px solid black; */
 }
 
 /* chart titles */
-h2, h3 {
-	margin-bottom: 0px;
-	font-size: 16px;
-	font-weight: 400;
-	text-align: center;
+h2,
+h3 {
+  margin-bottom: 0px;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
 }
 
 /* metrics */
 h4 {
-	margin-top: 0px;
-	margin-bottom: 10px;
-	padding-left: 10px;
-	font-size: 12px;
-	font-weight: normal;
-	text-align: left;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: left;
 }
 
 /* other text */
 p {
-	font-size: 12px;
-	text-align: left;
+  font-size: 12px;
+  text-align: left;
 }
-
 
 /*--------------VALUES AND AXIS LABELS--------------*/
 
 /* percentage value in Overall Progress */
 .percentage {
-	font-size: 20px;
-	font-weight: 500;
-	text-anchor: middle; 
+  font-size: 20px;
+  font-weight: 500;
+  text-anchor: middle;
 }
 
 /* axis labels for month, week, day */
 .month-names,
 .week-names,
 .week-abbrv,
-.month-name-streak, 
-.week-day  {
-	fill: #000000; /* font color in SVG */
-	font-size: 12px;
-	font-weight: 400;
-	text-align: left;
+.month-name-streak,
+.week-day {
+  fill: #000000; /* font color in SVG */
+  font-size: 12px;
+  font-weight: 400;
+  text-align: left;
 }
 
 .month-day-streak {
-	fill: #000000; /* font color in SVG */
-	font-size: 10px;
-	font-weight: 400;
+  fill: #000000; /* font color in SVG */
+  font-size: 10px;
+  font-weight: 400;
 }
 
 /* month values and week values */
-.month-values, 
+.month-values,
 .week-values {
-	fill: #000000;
-	font-size: 12px;
-	font-weight: 600;
-	text-anchor: middle; 
+  fill: #000000;
+  font-size: 12px;
+  font-weight: 600;
+  text-anchor: middle;
 }
 
 /*hide the days of the months from the cells*/
 /*when window width < 1000px*/
 @media (max-width: 1000px) {
-	.month-day-streak {
-		fill: #000000; /* font color in SVG */
-		font-size: 7px;
-		font-weight: 400;
-	}
+  .month-day-streak {
+    fill: #000000; /* font color in SVG */
+    font-size: 7px;
+    font-weight: 400;
+  }
 }
 
 /*hide day of week and name of month*/
 /*when window width < 7500px*/
 @media (max-width: 750px) {
-	.week-day, .week-names, .week-values {
-		visibility: hidden;
-	}
+  .week-day,
+  .week-names,
+  .week-values {
+    visibility: hidden;
+  }
 }
-/*--------------CSS GRID RESPONSIVE LAYOUT--------------*/	
+/*--------------CSS GRID RESPONSIVE LAYOUT--------------*/
 
 /* VIEWPORT WIDTH > 1600px */
 
-	/* container for CSS Grid */
-	.grid-container {
-		display: grid; /* initiate CSS Grid */
-		grid-template-columns: 180px 180px 180px 700px auto; /* create 5 columns and set width */
-		/*!! width of the 4h column has to be set explicitly (not auto) !!*/
-		/*height set explicitly to 55px to fit <h1> and margin*/
-		grid-template-rows: 55px 200px 150px 300px auto; /* create 5 rows and set width */
-	}
+/* container for CSS Grid */
+.grid-container {
+  display: grid; /* initiate CSS Grid */
+  grid-template-columns: 180px 180px 180px 700px auto; /* create 5 columns and set width */
+  /*!! width of the 4h column has to be set explicitly (not auto) !!*/
+  /*height set explicitly to 55px to fit <h1> and margin*/
+  grid-template-rows: 55px 200px 150px 300px auto; /* create 5 rows and set width */
+}
 
-	/* container for title */
-	#title {
-		grid-area: 1/1/2/4; 
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+#select-year {
+  grid-area: 1/1/2/2;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
 
-	/* container for Yearly Progress - D3 Donut Chart */
-	#yearly-progress {
-		grid-area: 2/1/3/2; 
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+/* container for title */
+#dashboard-title {
+  grid-area: 1/2/2/4;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
 
-	/* container for Montly Progress - D3 Donut Chart */
-	#monthly-progress {
-		grid-area: 2/2/3/3;
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+/* container for Yearly Progress - D3 Donut Chart */
+#yearly-progress {
+  grid-area: 2/1/3/2;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
 
-	/* container for Weekly Progress - D3 Donut Chart */
-	#weekly-progress {
-		grid-area: 2/3/3/4;
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+/* container for Montly Progress - D3 Donut Chart */
+#monthly-progress {
+  grid-area: 2/2/3/3;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
 
-	/* container for Delta Progress - D3 Line Chart */
-	#delta-progress {
-		grid-area: 3/1/4/4; 
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+/* container for Weekly Progress - D3 Donut Chart */
+#weekly-progress {
+  grid-area: 2/3/3/4;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
 
-	/* container for Monthly Progress - D3 Column Chart */
-	#month-distances {
-		grid-area: 1/4/4/5; 
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+/* container for Delta Progress - D3 Line Chart */
+#delta-progress {
+  grid-area: 3/1/4/4;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
 
-	/* container for Weekly Progress - D3 Column Chart */
-	#week-distances {
-		grid-area: 4/1/5/5;
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+/* container for Monthly Progress - D3 Column Chart */
+#month-distances {
+  grid-area: 1/4/4/5;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
 
-	/* container for Daily Streak  - D3 Calendar Chart */
-	#daily-streak {
-		grid-area: 5/1/6/5; 
-		border-right: 1px solid black;
-	}
+/* container for Weekly Progress - D3 Column Chart */
+#week-distances {
+  grid-area: 4/1/5/5;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
 
-	/* container for table with runs */
-	/* the table with runs is moved to the right when viewport width < 1600px */
-	#table {
-		grid-area: 1/5/6/6; 
-	}
+/* container for Daily Streak  - D3 Calendar Chart */
+#daily-streak {
+  grid-area: 5/1/6/5;
+  border-right: 1px solid black;
+}
+
+/* container for table with runs */
+/* the table with runs is moved to the right when viewport width < 1600px */
+#table {
+  grid-area: 1/5/6/6;
+}
 
 /* VIEWPORT WIDTH BETWEEN 750px and 1600px */
 @media (max-width: 1600px) {
+  /*container for CSS Grid*/
+  .grid-container {
+    display: grid; /*initiate CSS Grid */
+    /*create 4 columns and set width; sum of percentages should be 100%*/
+    grid-template-columns: 16.666% 16.666% 16.666% 50%;
+    /* create 5 rows and set width */
+    /*setting the row height to auto allocates just enough space to fit the charts*/
+    /*height set explicitly to 55px to fit <h1> and margin*/
+    grid-template-rows: 55px auto auto auto auto auto;
+  }
 
-	/*container for CSS Grid*/
-	.grid-container {
-		display: grid; /*initiate CSS Grid */
-		/*create 4 columns and set width; sum of percentages should be 100%*/
-		grid-template-columns: 16.666% 16.666% 16.666% 50%; 
-		/* create 5 rows and set width */
-		/*setting the row height to auto allocates just enough space to fit the charts*/
-		/*height set explicitly to 55px to fit <h1> and margin*/
-		grid-template-rows: 55px auto auto auto auto auto;
-	}
+  #select-year {
+    grid-area: 1/1/2/2;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
 
-	/* container for title */
-	#title {
-		grid-area: 1/1/2/4; 
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+  /* container for title */
+  #dashboard-title {
+    grid-area: 1/2/2/4;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
 
-	/* container for Yearly Progress - Donut Chart */
-	#yearly-progress {
-		grid-area: 2/1/3/2; 
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+  /* container for Yearly Progress - Donut Chart */
+  #yearly-progress {
+    grid-area: 2/1/3/2;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
 
-	/* container for Montly Progress - Donut Chart */
-	#monthly-progress {
-		grid-area: 2/2/3/3;
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+  /* container for Montly Progress - Donut Chart */
+  #monthly-progress {
+    grid-area: 2/2/3/3;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
 
-	/* container for Weekly Progress - Donut Chart */
-	#weekly-progress {
-		grid-area: 2/3/3/4;
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+  /* container for Weekly Progress - Donut Chart */
+  #weekly-progress {
+    grid-area: 2/3/3/4;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
 
-	/* container for Delta Progress - D3 Line Chart */
-	#delta-progress {
-		grid-area: 3/1/4/4; 
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+  /* container for Delta Progress - D3 Line Chart */
+  #delta-progress {
+    grid-area: 3/1/4/4;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
 
-	/* container for Monthly Progress - D3 Column Chart */
-	#month-distances {
-		grid-area: 1/4/4/5; 
-		border-bottom: 1px solid black;
-		border-right: 0px;
-	}
+  /* container for Monthly Progress - D3 Column Chart */
+  #month-distances {
+    grid-area: 1/4/4/5;
+    border-bottom: 1px solid black;
+    border-right: 0px;
+  }
 
-	/* container for Weekly Progress - D3 Column Chart */
-	#week-distances {
-		grid-area: 4/1/5/5;
-		border-bottom: 1px solid black;
-		border-right: 0px;		
-	}
+  /* container for Weekly Progress - D3 Column Chart */
+  #week-distances {
+    grid-area: 4/1/5/5;
+    border-bottom: 1px solid black;
+    border-right: 0px;
+  }
 
-	/* container for Daily Streak - D3 Calendar Chart */
-	#daily-streak {
-		grid-area: 5/1/6/5; 
-		border-bottom: 1px solid black;
-		border-right: 0px;
-	}
+  /* container for Daily Streak - D3 Calendar Chart */
+  #daily-streak {
+    grid-area: 5/1/6/5;
+    border-bottom: 1px solid black;
+    border-right: 0px;
+  }
 
-	/* container for table with runs */
-	#table {
-		grid-area: 6/1/7/5;
-		/* the table with runs is moved below when viewport width < 1600px */
-		width: 100%;
-		margin-top: 10px;
-	}
-
+  /* container for table with runs */
+  #table {
+    grid-area: 6/1/7/5;
+    /* the table with runs is moved below when viewport width < 1600px */
+    width: 100%;
+    margin-top: 10px;
+  }
 }
 
 /* VIEWPORT WIDTH < 750px */
 
 @media (max-width: 750px) {
+  /*container for CSS Grid*/
+  .grid-container {
+    display: grid; /*initiate CSS Grid */
+    grid-template-columns: 33.33% 33.33% 33.33%; /*create 3 columns and set width*/
+    /*height set explicitly to 55px to fit <h1> and margin*/
+    grid-template-rows: 55px auto auto auto auto auto auto; /* create 7 rows and set width */
+  }
 
-	/*container for CSS Grid*/
-	.grid-container {
-		display: grid; /*initiate CSS Grid */
-		grid-template-columns: 33.33% 33.33% 33.33%; /*create 3 columns and set width*/
-		/*height set explicitly to 55px to fit <h1> and margin*/
-		grid-template-rows: 55px auto auto auto auto auto auto; /* create 7 rows and set width */
-	}
+  #select-year {
+    grid-area: 1/1/2/2;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
 
-	/* container for title */
-	#title {
-		grid-area: 1/1/2/4; 
-		border-bottom: 1px solid black;
-		border-right: 0px;
-	}
+  /* container for title */
+  #dashboard-title {
+    grid-area: 1/2/2/4;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
 
-	/* container for Yearly Progress - Donut Chart */
-	#yearly-progress {
-		grid-area: 2/1/3/2; 
-		width: 100%;
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+  /* container for Yearly Progress - Donut Chart */
+  #yearly-progress {
+    grid-area: 2/1/3/2;
+    width: 100%;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
 
-	/* container for Montly Progress - Donut Chart */
-	#monthly-progress {
-		grid-area: 2/2/3/3;
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
-	}
+  /* container for Montly Progress - Donut Chart */
+  #monthly-progress {
+    grid-area: 2/2/3/3;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
 
-	/* container for Weekly Progress - Donut Chart */
-	#weekly-progress {
-		grid-area: 2/3/3/4;
-		border-bottom: 1px solid black;
-		border-right: 0px;
-	}
+  /* container for Weekly Progress - Donut Chart */
+  #weekly-progress {
+    grid-area: 2/3/3/4;
+    border-bottom: 1px solid black;
+    border-right: 0px;
+  }
 
-	/* container for Delta Progress (D3 Line Chart) */
-	#delta-progress {
-		grid-area: 3/1/4/4; 
-		border-bottom: 1px solid black;
-		border-right: 0px;
-	}
+  /* container for Delta Progress (D3 Line Chart) */
+  #delta-progress {
+    grid-area: 3/1/4/4;
+    border-bottom: 1px solid black;
+    border-right: 0px;
+  }
 
-	/* container for Monthly Progress D3 Column Chart */
-	#month-distances {
-		grid-area: 4/1/5/4; 
-		border-bottom: 1px solid black;
-		border-right: 0px;
-	}
+  /* container for Monthly Progress D3 Column Chart */
+  #month-distances {
+    grid-area: 4/1/5/4;
+    border-bottom: 1px solid black;
+    border-right: 0px;
+  }
 
-	/* container for Weekly Progress D3 Column Chart */
-	#week-distances {
-		grid-area: 5/1/6/4;
-		border-bottom: 1px solid black;
-		border-right: 0px;
+  /* container for Weekly Progress D3 Column Chart */
+  #week-distances {
+    grid-area: 5/1/6/4;
+    border-bottom: 1px solid black;
+    border-right: 0px;
+  }
 
-	}
+  /* container for Daily Streak (Calendar) */
+  #daily-streak {
+    grid-area: 6/1/7/4;
+    border-bottom: 1px solid black;
+    border-right: 0px;
+  }
 
-	/* container for Daily Streak (Calendar) */
-	#daily-streak {
-		grid-area: 6/1/7/4;
-		border-bottom: 1px solid black;
-		border-right: 0px;
-
-	}
-
-	/* container for table with runs */
-	/* the table is moved below when viewport width < 1600px */
-	#table {
-		grid-area: 7/1/8/4;
-		margin-top: 10px;
-		width: 100%;
-	}
-
+  /* container for table with runs */
+  /* the table is moved below when viewport width < 1600px */
+  #table {
+    grid-area: 7/1/8/4;
+    margin-top: 10px;
+    width: 100%;
+  }
 }
-
 
 /*--------------SVG CONTAINERS FOR GRAPHS--------------*/
 
 #yearly-progress-svg {
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	max-width: 170px; /*set max width to prevent resizing*/
-	margin: 0 auto; /*set margins like that to center*/
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  max-width: 170px; /*set max width to prevent resizing*/
+  margin: 0 auto; /*set margins like that to center*/
 }
 
 #monthly-progress-svg {
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	max-width: 170px; /*set max width to prevent resizing*/
-	margin: 0 auto; /*set margins like that to center*/	
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  max-width: 170px; /*set max width to prevent resizing*/
+  margin: 0 auto; /*set margins like that to center*/
 }
 
 #weekly-progress-svg {
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	max-width: 170px; /*set max width to prevent resizing*/
-	margin: 0 auto; /*set margins like that to center*/	
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  max-width: 170px; /*set max width to prevent resizing*/
+  margin: 0 auto; /*set margins like that to center*/
 }
 
 #delta-progress-svg {
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 5px;
-	padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 #delta-progress-chart {
-	width: 100%; /* fit the width of the #delta-progress-svg container */
+  width: 100%; /* fit the width of the #delta-progress-svg container */
 }
 
 /*style the Monthly Distances chart*/
 #month-distances-svg {
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	margin: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin: 0px;
 }
 
 #month-distances-chart {
-	width: 100%; /* fit the width of the #month-distances-svg container */
+  width: 100%; /* fit the width of the #month-distances-svg container */
 }
 
 /*style the Weekly Distance chart*/
 #week-distances-svg {
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 0px;
-	padding-bottom: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 #week-distances-chart {
-	width: 100%; /* fit the width of the #week-distances-svg container */
+  width: 100%; /* fit the width of the #week-distances-svg container */
 }
 
 /*style the Daily Streak chart*/
 #daily-streak-svg {
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 0px;
-	padding-bottom: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 #daily-streak-chart {
-	width: 100%; /* fit the width of the #daily-streak-chart container */
+  width: 100%; /* fit the width of the #daily-streak-chart container */
 }
 
 #current-year,
 #current-month,
 #current-week {
-	margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 /*--------------TABLE FOR RUNS--------------*/
 
 #table-data {
-	min-width: 350px; /* set minimum width to make text readable */
-	max-width: 700px; /* set maximum width to prevent table from stretching too much */
-	margin: 0px auto 0px auto; /* center the table left-right */
+  min-width: 350px; /* set minimum width to make text readable */
+  max-width: 700px; /* set maximum width to prevent table from stretching too much */
+  margin: 0px auto 0px auto; /* center the table left-right */
 }
 
 #table-runs {
   position: relative;
-  width: 100%;  
+  width: 100%;
 }
 
 /*font settings for all table elements*/
-table, th, td{
+table,
+th,
+td {
   font-size: 12px;
   line-height: 16px;
-	text-align: left;
+  text-align: left;
 }
 
 /*style for table headers*/
 th {
-	padding: 5px 5px 5px 5px;
-	font-weight: 600;
-  background-color: #D1D1D1;
-	cursor: pointer;
+  padding: 5px 5px 5px 5px;
+  font-weight: 600;
+  background-color: #d1d1d1;
+  cursor: pointer;
 }
 
 /*style for table rows*/
 tr {
-	padding: 10px;
-  background-color: #F3F3F3;
+  padding: 10px;
+  background-color: #f3f3f3;
 }
 
 /*style for table cells*/
 td {
-	padding: 5px 5px 5px 5px;
-	font-weight: 400;
+  padding: 5px 5px 5px 5px;
+  font-weight: 400;
 }
 
 #title-table {
-	padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 /*--------------CALENDAR VIEW--------------*/
 
 .day {
-  fill: #FFFFFF;
+  fill: #ffffff;
   stroke: #000000;
   stroke-width: 1px;
 }
 
 .day-name {
-	 fill: #000000;
+  fill: #000000;
 }
 
 /*thicker border that delimits the days for each month*/
@@ -493,53 +513,60 @@ td {
 
 /*when window width < 750px*/
 @media (max-width: 750px) {
-	.day {
-		stroke-width: 0.5px;
-	}
-	.month-group {
-	  stroke-width: 2px;
-	}
+  .day {
+    stroke-width: 0.5px;
+  }
+  .month-group {
+    stroke-width: 2px;
+  }
 }
 
 /*day without run - grey color*/
 .q0 {
-	fill: #D1D1D1;
-} 
+  fill: #d1d1d1;
+}
 /*day with run - green color*/
 .q1 {
-	fill: #09990C;
-} 
+  fill: #09990c;
+}
 
 /*horizontal line for monthly target*/
 .grid path {
-	stroke: #000000;
-	stroke-opacity: 0.4;
-	stroke-dasharray: 10px 3px;
+  stroke: #000000;
+  stroke-opacity: 0.4;
+  stroke-dasharray: 10px 3px;
 }
-
 
 /*--------------PROGRESS LINE CHARTS--------------*/
 
 #line-ideal {
-	fill: none;
-	stroke: #000000;
-	stroke-width: 2;
+  fill: none;
+  stroke: #000000;
+  stroke-width: 2;
 }
 
 #line-real {
-	fill: none;
-	stroke: #09990C;
-	stroke-width: 2;
+  fill: none;
+  stroke: #09990c;
+  stroke-width: 2;
 }
 
 .area {
-	fill: #09990C;
-	stroke: #000000;
-	stroke-width: 1.5;
+  fill: #09990c;
+  stroke: #000000;
+  stroke-width: 1.5;
 }
 
-* {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+/*--------------DROP DOWN YEAR SELECTION--------------*/
+
+#select-year select {
+  width: 60%;
+  height: 30px;
+  font-size: 16px;
+  font-weight: 800;
+  background-color: #09990c;
+  color: #ffffff;
+  /* center the dropdown inside the div */
+  margin: 11px 20%; 
+  padding: 2px;
 }
