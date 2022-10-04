@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <title>Running Dashboard v2</title>
+    <title>Running Dashboard</title>
     <link rel="shortcut icon" href="img/favicon.ico" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -48,11 +48,6 @@
         <div id="weekly-progress-svg"></div>
       </div>
 
-      <!-- container for delta progress line chart -->
-      <div id="delta-progress" title="Stay Above Average to Accomplish Goal">
-        <div id="delta-progress-svg"></div>
-      </div>
-
       <!-- container for monthly distances column chart -->
       <div id="month-distances" title="Monthly Performance vs Average Needed">
         <h2>Monthly Distances (km)</h2>
@@ -77,9 +72,6 @@
         <div id="table-data"></div>
       </div>
     </div>
-
-    <!-- needs to be positioned down in the html file because the JS code invokes
-		DOM elements that first need to initialized -->
     <script type="text/javascript" src="scripts/main.js"></script>
   </body>
 </html>

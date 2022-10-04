@@ -1,20 +1,3 @@
-/*--------------CSS FILE RULES--------------*/
-
-/*
-1. Keep lines short by not exceeding 80 characters per line 
-2. Selectors that are more broad (general) should come first in the css file.
-3. Group CSS properties by:
-		+ Position Properties
-		+ Box-Model Properties
-		+ Color Properties
-		+ Font and Text Properties
-4. Separate groups by space. If the group is more extended, add group name as a
-comment.
-5. In each group, sort properties by importance. If importance is not apparent,
-sort alphabetically.
-6. Be consistent with letter case in color codes (uppercase).		
-*/
-
 /*--------------GENERAL SELECTORS--------------*/
 
 * {
@@ -163,12 +146,6 @@ p {
   border-right: 1px solid black;
 }
 
-/* container for Delta Progress - D3 Line Chart */
-#delta-progress {
-  grid-area: 3/1/4/4;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-}
 
 /* container for Monthly Progress - D3 Column Chart */
 #month-distances {
@@ -243,12 +220,6 @@ p {
     border-right: 1px solid black;
   }
 
-  /* container for Delta Progress - D3 Line Chart */
-  #delta-progress {
-    grid-area: 3/1/4/4;
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-  }
 
   /* container for Monthly Progress - D3 Column Chart */
   #month-distances {
@@ -326,13 +297,6 @@ p {
     border-right: 0px;
   }
 
-  /* container for Delta Progress (D3 Line Chart) */
-  #delta-progress {
-    grid-area: 3/1/4/4;
-    border-bottom: 1px solid black;
-    border-right: 0px;
-  }
-
   /* container for Monthly Progress D3 Column Chart */
   #month-distances {
     grid-area: 4/1/5/4;
@@ -392,16 +356,6 @@ p {
   margin: 0 auto; /*set margins like that to center*/
 }
 
-#delta-progress-svg {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-#delta-progress-chart {
-  width: 100%; /* fit the width of the #delta-progress-svg container */
-}
 
 /*style the Monthly Distances chart*/
 #month-distances-svg {

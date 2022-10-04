@@ -51,10 +51,6 @@ let mergedWeeksData; // formatted for D3 chart
 let allDays = [];
 let runDays = [];
 
-let progressDelta = [];
-let progressIdeal = [];
-let progressReal = [];
-
 let distMonthTarget;
 let distWeekTarget;
 
@@ -85,7 +81,7 @@ function getSheetData() {
     header: true,
     skipEmptyLines: true,
     complete: function (results) {
-      sheetData = results.data;
+      const sheetData = results.data;
 
       // the array is emptied each time data for a new year is requested
       arrayRuns.length = 0;
@@ -333,67 +329,10 @@ function processData() {
   dataWeekProgress.length = 0; //clear previous data
   dataWeekProgress.push(procWeekDone);
   dataWeekProgress.push(procWeekRemain);
-
-  // --------------------DATA FOR DELTA PROGRESS --------------------
-  // data to generate ideal progress line chart
-  allDays.length = 0;
-  progressIdeal.length = 0;
-
-  // data to generate real progress line chart
-  let currentDistance = 0;
-  progressReal.length = 0;
-  
-  runDays.length = 0 // clear previous data
-
-  // iterate all days of the year
-  for (let i = 1; i <= 365; i++) {
-    allDays.push(i);
-    progressIdeal.push(i * (1000 / 365));
-  }
-
-  for (let i = 0; i < arrayDates.length; i++) {
-    let dateSum = Date.parse(arrayDates[i]);
-    let start = new Date(currentYear, 0, 0);
-    let diff = dateSum - start;
-    let oneDay = 1000 * 60 * 60 * 24;
-    let dayRun = Math.floor(diff / oneDay);
-    runDays.push(dayRun);
-  }
-
-  for (let i = 0; i < arrayDistances.length; i++) {
-    currentDistance += Number(arrayDistances[i]);
-    progressReal.push(currentDistance);
-  }
-
-  // plot a point representing the current total distance with today's date
-  let now = new Date();
-  let start = new Date(2021, 0, 0);
-  let diff = now - start;
-  let oneDay = 1000 * 60 * 60 * 24;
-  let currentDay = Math.floor(diff / oneDay);
-  runDays.push(currentDay);
-
-  let last = progressReal.length - 1;
-  let lastElement = progressReal[last];
-  progressReal.push(lastElement);
-
-  let delta;
-
-  progressDelta.length = 0; //clear
-
-  for (let i = 0; i < runDays.length; i++) {
-    for (let j = 0; j < allDays.length; j++) {
-      if (runDays[i] === allDays[j]) {
-        delta = progressReal[i] - progressIdeal[j];
-        progressDelta.push(delta);
-      }
-    }
-  }
 }
 
 // -----------------GENERATE CHARTS ----------------
 function generateCharts() {
-
   // ----------------MONTHLY DISTANCES - COLUMN CHART------------------
   // empty the container chart to create a new one with a new width
   document.getElementById("month-distances-svg").innerHTML = "";
@@ -613,96 +552,6 @@ function generateCharts() {
       let yText = 240; // y position of text
       return "translate(" + xText + ", " + yText + ") rotate(-90)";
     });
-
-  // -----------------LINE CHART - OVERALL PROGRESS -----------------
-
-  // empty the container to create a new one with a new width
-  document.getElementById("delta-progress-svg").innerHTML = "";
-
-  // get the new width of the container that will hold the chart
-  let newChartWidth2 = document.getElementById("delta-progress").clientWidth;
-
-  let widthProgr = newChartWidth2;
-  let heightProgr = 136; // instead of 150 as the SVG is created after the CSS with border-box
-  let axisOffset = 25;
-
-  let dataIdeal = d3.zip(
-    allDays,
-    Array.from({ length: 365 }, (_, i) => 0)
-  );
-  let dataReal = d3.zip(runDays, progressDelta);
-
-  let xScaleNew = d3
-    .scaleLinear()
-    .domain([d3.min(allDays), d3.max(runDays)])
-    .range([axisOffset, widthProgr]);
-
-  let yScaleNew = d3.scaleLinear().domain([-50, 50]).range([heightProgr, 0]);
-
-  // no x axis is needed for this line chart
-
-  // define Y axis
-  let yAxis = d3.axisLeft().scale(yScaleNew).ticks(4);
-  // .outerTickSize(0);
-
-  // define line generator
-  let line = d3
-    .line()
-    .x(function (d) {
-      return xScaleNew(d[0]);
-    })
-    .y(function (d) {
-      return yScaleNew(d[1]);
-    });
-
-  let area1 = d3
-    .area()
-    .defined(function (d) {
-      return yScaleNew(d[1]);
-    })
-    .x(function (d) {
-      return xScaleNew(d[0]);
-    })
-    .y0(function () {
-      return yScaleNew.range()[0] / 2;
-    })
-    .y1(function (d) {
-      return yScaleNew(d[1]);
-    });
-
-  // create the SVG element
-  var svgLineChart = d3
-    .select("#delta-progress-svg")
-    .append("svg")
-    .attr("width", widthProgr)
-    .attr("height", heightProgr)
-    .attr("id", "delta-progress-chart");
-
-  // create the two lines
-  svgLineChart
-    .append("path")
-    .datum(dataIdeal)
-    .attr("id", "line-ideal")
-    .attr("d", line);
-
-  svgLineChart
-    .append("path")
-    .datum(dataReal)
-    .attr("id", "line-real")
-    .attr("d", line);
-
-  svgLineChart
-    .append("path")
-    .datum(dataReal)
-    .attr("class", "area")
-    .attr("d", area1);
-
-  // create y axis
-  svgLineChart
-    .append("g")
-    .attr("class", "axis")
-    .attr("transform", "translate(" + axisOffset + ",0)")
-    .call(yAxis);
 
   // -----------------CALENDAR VIEW-----------------
   // empty the container to create a new chart with a new width
