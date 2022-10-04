@@ -59,14 +59,16 @@ p {
 .week-abbrv,
 .month-name-streak,
 .week-day {
-  fill: #000000; /* font color in SVG */
+  fill: #000000;
+    /* font color in SVG */
   font-size: 12px;
   font-weight: 400;
-  text-align: left;
+  text-align: center;
 }
 
 .month-day-streak {
-  fill: #000000; /* font color in SVG */
+  fill: #000000;
+    /* font color in SVG */
   font-size: 10px;
   font-weight: 400;
 }
@@ -84,19 +86,10 @@ p {
 /*when window width < 1000px*/
 @media (max-width: 1000px) {
   .month-day-streak {
-    fill: #000000; /* font color in SVG */
+    fill: #000000;
+      /* font color in SVG */
     font-size: 7px;
     font-weight: 400;
-  }
-}
-
-/*hide day of week and name of month*/
-/*when window width < 7500px*/
-@media (max-width: 750px) {
-  .week-day,
-  .week-names,
-  .week-values {
-    visibility: hidden;
   }
 }
 /*--------------CSS GRID RESPONSIVE LAYOUT--------------*/
@@ -105,11 +98,14 @@ p {
 
 /* container for CSS Grid */
 .grid-container {
-  display: grid; /* initiate CSS Grid */
-  grid-template-columns: 180px 180px 180px 700px auto; /* create 5 columns and set width */
+  display: grid;
+    /* initiate CSS Grid */
+    grid-template-columns: 180px 180px 180px 700px auto;
+    /* create 5 columns and set width */
   /*!! width of the 4h column has to be set explicitly (not auto) !!*/
   /*height set explicitly to 55px to fit <h1> and margin*/
-  grid-template-rows: 55px 200px 150px 300px auto; /* create 5 rows and set width */
+  grid-template-rows: 55px 200px 150px 300px auto;
+    /* create 5 rows and set width */
 }
 
 #select-year {
@@ -145,8 +141,6 @@ p {
   border-bottom: 1px solid black;
   border-right: 1px solid black;
 }
-
-
 /* container for Monthly Progress - D3 Column Chart */
 #month-distances {
   grid-area: 1/4/4/5;
@@ -160,6 +154,14 @@ p {
   border-bottom: 1px solid black;
   border-right: 1px solid black;
 }
+/* container for Weekly Progress - D3 Column Chart */
+#week-distances-horizontal {
+  /* hidden for this screen size */
+  display: none;
+  grid-area: 5/1/6/5;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
 
 /* container for Daily Streak  - D3 Calendar Chart */
 #daily-streak {
@@ -170,14 +172,15 @@ p {
 /* container for table with runs */
 /* the table with runs is moved to the right when viewport width < 1600px */
 #table {
-  grid-area: 1/5/6/6;
+  grid-area: 1/5/7/6;
 }
 
 /* VIEWPORT WIDTH BETWEEN 750px and 1600px */
 @media (max-width: 1600px) {
   /*container for CSS Grid*/
   .grid-container {
-    display: grid; /*initiate CSS Grid */
+    display: grid;
+      /*initiate CSS Grid */
     /*create 4 columns and set width; sum of percentages should be 100%*/
     grid-template-columns: 16.666% 16.666% 16.666% 50%;
     /* create 5 rows and set width */
@@ -219,8 +222,7 @@ p {
     border-bottom: 1px solid black;
     border-right: 1px solid black;
   }
-
-
+  
   /* container for Monthly Progress - D3 Column Chart */
   #month-distances {
     grid-area: 1/4/4/5;
@@ -234,17 +236,25 @@ p {
     border-bottom: 1px solid black;
     border-right: 0px;
   }
+                                                                                                                                                                                                                                                                /* container for Weekly Progress - D3 Bar Chart */
+                                                                                                                                                                                                                                                                #week-distances-horizontal {
+                                                                                                                                                                                                                                                                  /* hidden for this screen size */
+                                                                                                                                                                                                                                                                  /* display: none; */
+                                                                                                                                                                                                                                                                  grid-area: 5/1/6/5;
+                                                                                                                                                                                                                                                                  border-bottom: 1px solid black;
+                                                                                                                                                                                                                                                                  border-right: 0px;
+                                                                                                                                                                                                                                                                }
 
   /* container for Daily Streak - D3 Calendar Chart */
   #daily-streak {
-    grid-area: 5/1/6/5;
+    grid-area: 6/1/7/5;
     border-bottom: 1px solid black;
     border-right: 0px;
   }
 
   /* container for table with runs */
   #table {
-    grid-area: 6/1/7/5;
+    grid-area: 7/1/8/5;
     /* the table with runs is moved below when viewport width < 1600px */
     width: 100%;
     margin-top: 10px;
@@ -256,10 +266,13 @@ p {
 @media (max-width: 750px) {
   /*container for CSS Grid*/
   .grid-container {
-    display: grid; /*initiate CSS Grid */
-    grid-template-columns: 33.33% 33.33% 33.33%; /*create 3 columns and set width*/
+    display: grid;
+      /*initiate CSS Grid */
+      grid-template-columns: 33.33% 33.33% 33.33%;
+      /*create 3 columns and set width*/
     /*height set explicitly to 55px to fit <h1> and margin*/
-    grid-template-rows: 55px auto auto auto auto auto auto; /* create 7 rows and set width */
+    grid-template-rows: 55px auto auto auto auto auto auto;
+      /* create 7 rows and set width */
   }
 
   #select-year {
@@ -306,14 +319,24 @@ p {
 
   /* container for Weekly Progress D3 Column Chart */
   #week-distances {
+    display: none;
+      width: 0;
+      height: 0;
     grid-area: 5/1/6/4;
     border-bottom: 1px solid black;
     border-right: 0px;
   }
+                                                                                                                                                                                                                                                                /* container for Weekly Progress D3 Bar Chart */
+                                                                                                                                                                                                                                                                #week-distances-horizontal {
+                                                                                                                                                                                                                                                                  display: block;
+                                                                                                                                                                                                                                                                  grid-area: 6/1/7/4;
+                                                                                                                                                                                                                                                                  border-bottom: 1px solid black;
+                                                                                                                                                                                                                                                                  border-right: 0px;
+                                                                                                                                                                                                                                                                }
 
   /* container for Daily Streak (Calendar) */
   #daily-streak {
-    grid-area: 6/1/7/4;
+    grid-area: 7/1/8/4;
     border-bottom: 1px solid black;
     border-right: 0px;
   }
@@ -321,7 +344,7 @@ p {
   /* container for table with runs */
   /* the table is moved below when viewport width < 1600px */
   #table {
-    grid-area: 7/1/8/4;
+    grid-area: 8/1/9/4;
     margin-top: 10px;
     width: 100%;
   }
@@ -334,8 +357,10 @@ p {
   padding-right: 15px;
   padding-top: 0px;
   padding-bottom: 0px;
-  max-width: 170px; /*set max width to prevent resizing*/
-  margin: 0 auto; /*set margins like that to center*/
+  max-width: 170px;
+    /*set max width to prevent resizing*/
+    margin: 0 auto;
+    /*set margins like that to center*/
 }
 
 #monthly-progress-svg {
@@ -343,8 +368,10 @@ p {
   padding-right: 15px;
   padding-top: 0px;
   padding-bottom: 0px;
-  max-width: 170px; /*set max width to prevent resizing*/
-  margin: 0 auto; /*set margins like that to center*/
+  max-width: 170px;
+    /*set max width to prevent resizing*/
+    margin: 0 auto;
+    /*set margins like that to center*/
 }
 
 #weekly-progress-svg {
@@ -352,11 +379,11 @@ p {
   padding-right: 15px;
   padding-top: 0px;
   padding-bottom: 0px;
-  max-width: 170px; /*set max width to prevent resizing*/
-  margin: 0 auto; /*set margins like that to center*/
+  max-width: 170px;
+    /*set max width to prevent resizing*/
+    margin: 0 auto;
+    /*set margins like that to center*/
 }
-
-
 /*style the Monthly Distances chart*/
 #month-distances-svg {
   padding-left: 15px;
@@ -367,7 +394,8 @@ p {
 }
 
 #month-distances-chart {
-  width: 100%; /* fit the width of the #month-distances-svg container */
+  width: 100%;
+    /* fit the width of the #month-distances-svg container */
 }
 
 /*style the Weekly Distance chart*/
@@ -379,7 +407,8 @@ p {
 }
 
 #week-distances-chart {
-  width: 100%; /* fit the width of the #week-distances-svg container */
+  width: 100%;
+    /* fit the width of the #week-distances-svg container */
 }
 
 /*style the Daily Streak chart*/
@@ -391,7 +420,8 @@ p {
 }
 
 #daily-streak-chart {
-  width: 100%; /* fit the width of the #daily-streak-chart container */
+  width: 100%;
+    /* fit the width of the #daily-streak-chart container */
 }
 
 #current-year,
@@ -403,9 +433,12 @@ p {
 /*--------------TABLE FOR RUNS--------------*/
 
 #table-data {
-  min-width: 350px; /* set minimum width to make text readable */
-  max-width: 700px; /* set maximum width to prevent table from stretching too much */
-  margin: 0px auto 0px auto; /* center the table left-right */
+  min-width: 350px;
+    /* set minimum width to make text readable */
+    max-width: 700px;
+    /* set maximum width to prevent table from stretching too much */
+    margin: 0px auto 0px auto;
+    /* center the table left-right */
 }
 
 #table-runs {
@@ -470,6 +503,7 @@ td {
   .day {
     stroke-width: 0.5px;
   }
+
   .month-group {
     stroke-width: 2px;
   }
@@ -479,6 +513,7 @@ td {
 .q0 {
   fill: #d1d1d1;
 }
+
 /*day with run - green color*/
 .q1 {
   fill: #09990c;

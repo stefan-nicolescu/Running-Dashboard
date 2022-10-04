@@ -553,6 +553,117 @@ function generateCharts() {
       return "translate(" + xText + ", " + yText + ") rotate(-90)";
     });
 
+  // WEEKLY DISTANCES - HORIZONTAL BAR CHART
+
+  // empty the container to create a new one with a new width
+  document.getElementById("week-distances-horizontal-svg").innerHTML = "";
+
+  // get the new width of the container that will hold the chart
+  let newChartWidth3_2 = document.getElementById(
+    "week-distances-horizontal"
+  ).clientWidth;
+
+  let wWeekChartHorizontal = newChartWidth3_2; // width of svg container for chart
+  let hWeekChartHorizontal = 1500; // height of svg container for chart
+  // define x scale
+  let yScaleWeekHorizontal = d3
+    .scaleBand()
+    .domain(d3.range(distancesWeeks.length))
+    .rangeRound([-10, hWeekChartHorizontal - 20])
+    .round(true)
+    .paddingInner(0.25);
+  // define y scale
+  let xScaleWeekHorizontal = d3
+    .scaleLinear()
+    .domain([0, d3.max(distancesWeeks) + 5])
+    .range([10, wWeekChartHorizontal]);
+
+  // Create SVG element
+  let svgWeekHorizontal = d3
+    .select("#week-distances-horizontal-svg") // select by id
+    .append("svg") // insert the <svg> inside the selected <div>
+    .attr("width", wWeekChartHorizontal) // assign width
+    .attr("height", hWeekChartHorizontal) // assign height
+    .attr("id", "week-distances-chart-2"); // assign id
+
+  // create vertical line for weekly target
+  let lineTargetWeekVertical = d3
+    .axisRight()
+    .scale(yScaleWeekHorizontal)
+    .tickValues([])
+    .tickSize(0);
+  svgWeekHorizontal
+    .append("g")
+    .attr("class", "grid")
+    // position line at the 20km/week value
+    .attr("transform", "translate(" + xScaleWeekHorizontal(22.5) + ", 0)")
+    .call(lineTargetWeekVertical);
+
+  // create <g> for each week
+  let weeks2 = svgWeekHorizontal.selectAll("g.week").data(mergedWeeksData);
+  let weeksEnterHorizontal = weeks2.enter().append("g").classed("week", true);
+  // create the <rect> elements
+  weeksEnterHorizontal
+    .append("rect")
+    .attr("y", function (d, i) {
+      return yScaleWeekHorizontal(i);
+    })
+    .attr("x", function (d) {
+      return 40;
+    })
+    .attr("height", yScaleWeekHorizontal.bandwidth())
+    .attr("width", function (d) {
+      return xScaleWeekHorizontal(d[0]);
+    })
+    // color week columns according to performance
+    .attr("fill", function (d) {
+      if (d[0] == 0) {
+        return "#D1D1D1";
+      } else if (d[0] < 19) {
+        return "#09990C";
+      } else {
+        return "#09990C";
+      }
+    })
+    .attr("stroke", "#000000")
+    .attr("stroke-width", "1px");
+
+  // text labels for weekly distance
+  weeksEnterHorizontal
+    .append("text")
+    .attr("class", "week-values") // assign a CSS class
+    .text(function (d) {
+      return d[0].toFixed(0);
+    })
+    .attr("text-anchor", "middle")
+    .attr("x", function (d) {
+      return xScaleWeekHorizontal(d[0]) + 50;
+    })
+    .attr("y", function (d, i) {
+      return yScaleWeekHorizontal(i) + yScaleWeekHorizontal.bandwidth() / 2 + 4;
+    });
+
+  // tooltips
+  weeksEnterHorizontal.append("title").text(function (d, i) {
+    return d[0].toFixed(0) + " km";
+  });
+
+  // text labels for week names
+  weeksEnterHorizontal
+    .append("text")
+    .attr("class", "week-names") // assign a CSS class
+    .text(function (d) {
+      // retrieve text from array
+      return d[1];
+    })
+    // SVG operation to rotate having (x,y) as origin
+    .attr("transform", function (d, i) {
+      let xText = 10;
+      let yText =
+        yScaleWeekHorizontal(i) + yScaleWeekHorizontal.bandwidth() / 2 + 2;
+      return "translate(" + xText + ", " + yText + ")";
+    });
+
   // -----------------CALENDAR VIEW-----------------
   // empty the container to create a new chart with a new width
   document.getElementById("daily-streak-svg").innerHTML = "";
