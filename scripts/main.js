@@ -1,18 +1,11 @@
-// -----------------DATA SOURCES ----------------
+// DATA SOURCES
 const urlRunData2021 =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTatXXTurZPUwtt5HDU6JKiFXx-WENl7eLX7dzR4kEc9HsID_U_I1wdVzHgKvclWP8TMtYkukXsMbde/pub?output=csv";
 
 const urlRunData2022 =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vQDxiF8ix4IEvtpMM-rTJiYFC1szu6DTSIvmpXLNo7jPoNp7Tma8BybwFjszDgXp-TU7eoxesahR8EI/pub?output=csv";
 
-// -----------------GLOBAL VARIABLES & CONSTANTS ----------------
-let currentUrl = urlRunData2022;
-let currentYear = 2022;
-let numberDaysYear = 365;
-let yearlyTarget = 1000; 
-
-// current date
-const dateNow = new Date();
+const yearlyTarget = 1000;
 
 const nameMonths = [
   "January",
@@ -29,8 +22,15 @@ const nameMonths = [
   "December",
 ];
 
-// abbreviations for week days
-const abbrWeekDays = ["M", "T", "W", "T", "F", "S", "S"];
+const abbrNameWeekDays = ["M", "T", "W", "T", "F", "S", "S"];
+
+let currentYear = 2022;
+let currentUrl = urlRunData2022;
+let numberDaysYear = 365;
+
+// current date
+const dateNow = new Date();
+
 
 // containers for run data
 let arrayRuns = []; // all runs
@@ -62,12 +62,12 @@ let procYearDone = 0;
 let procMonthDone = 0;
 let procWeekDone = 0;
 
-// -----------------SELECT YEAR AND GET DATA ----------------
+// get running data based on selected year 
 function selectYearData(selectedOption) {
-  if (selectedOption == 2021) {
+  if (selectedOption === '2021') {
     currentUrl = urlRunData2021;
     currentYear = 2021;
-  } else if (selectedOption == 2022) {
+  } else if (selectedOption === '2022') {
     currentUrl = urlRunData2022;
     currentYear = 2022;
   } else {
@@ -104,21 +104,19 @@ function getSheetData() {
   });
 }
 
-// -----------------PROCESS DATA ----------------
+// PROCESS DATA 
 function processData() {
   // function to get current week number
   function getWeekNum(d) {
-    // Copy date so don't modify original
+    // copy date so don't modify original
     d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-    // Set to nearest Thursday: current date + 4 - current day number
-    // Make Sunday's day number 7
+    // set to nearest Thursday: current date + 4 - current day number
+    // make Sunday's day number 7
     d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
-    // Get first day of year
-    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-    // Calculate full weeks to nearest Thursday
-    var weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
-    // Return array of year and week number
-    return weekNo;
+    // get first day of year
+    let yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    // calculate full weeks to nearest Thursday
+    return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
   }
 
   // write current year, month, week for titles of donut charts
@@ -134,23 +132,6 @@ function processData() {
   let yearlyAchieved = 0; // current year distance (km), initiated at 0
   let numberRuns = 0; // number of runs current year
 
-  // calculate total duration ran in 2021
-  let totTimeH = 0; // total number of hours (minutes and seconds added)
-  let totTimeM = 0; // total number of minutes (no minutes over 60)
-  let totTimeS = 0; // total number of seconds (no seconds over 60)
-  let sumH = 0; // total number of hours (only from hours)
-  let sumM = 0; // total number of minutes (only from minutes)
-  let sumS = 0; // total number of seconds (only from seconds)
-
-  // add leading zero for hours, minutes, seconds less than 10
-  // force hh:mm:ss time format
-  function leadingZero(x) {
-    if (Number(x) < 10) {
-      return "0" + x;
-    } else {
-      return String(x);
-    }
-  }
 
   // empty the arrays each time a new year is loaded
   arrayIds.length = 0;
@@ -160,7 +141,6 @@ function processData() {
   arraySpeeds.length = 0;
   arrayPaces.length = 0;
 
-  // read the JSON containing data on runs and populate arrays with data
   for (let i = 0; i < arrayRuns.length; i++) {
     arrayIds.push(arrayRuns[i]["id"]); // add ids to array
     arrayDates.push(arrayRuns[i]["date"]); // keep yyyy-mm-dd
@@ -170,10 +150,6 @@ function processData() {
     let durHours = arrayRuns[i]["time_h"]; // hours for run i
     let durMinutes = arrayRuns[i]["time_m"]; // minutes for run i
     let durSeconds = arrayRuns[i]["time_s"]; // seconds for run i
-
-    sumH += durHours; // sum hours
-    sumM += durMinutes; // sum minutes
-    sumS += durSeconds; // sum seconds
 
     // duration in hours for run i
     let durRunHours = durHours + durMinutes / 60 + durSeconds / 3600;
@@ -202,6 +178,7 @@ function processData() {
     arrayPaces.push(paceRun); // populate array of paces
   }
 
+
   // sum distances to obtain current year distance
   yearlyAchieved = 0; // clear previous data
 
@@ -217,7 +194,30 @@ function processData() {
   dataYearProgress.push(procYearDone);
   dataYearProgress.push(procYearRemain);
 
-  // --------------------DATA FOR MONTHS CHARTS --------------------
+  // calculate stats for the entire year
+  let sumPartialHours = 0;
+  let sumPartialMinutes = 0;
+  let sumPartialSeconds = 0;
+
+  arrayRuns.forEach((run) => {
+    sumPartialHours += run.time_h
+    sumPartialMinutes += run.time_m
+    sumPartialSeconds += run.time_s
+  })
+
+  let totalMinutes = sumPartialHours * 60 + sumPartialMinutes + sumPartialSeconds / 60;
+
+  let finalSeconds = sumPartialSeconds % 60;
+  let finalMinutes = (sumPartialMinutes + Math.floor(sumPartialSeconds / 60)) % 60
+  let finalHours = sumPartialHours + Math.floor((sumPartialMinutes + Math.floor(sumPartialSeconds / 60)) / 60)
+
+  document.getElementById("total-duration-year").innerHTML =
+    `${leadingZero(finalHours)}:${leadingZero(finalMinutes)}:${leadingZero(finalSeconds)}`
+
+  document.getElementById("average-speed-year").innerHTML =
+    `${Math.floor(totalMinutes / yearlyAchieved)}:${parseInt((totalMinutes / yearlyAchieved - Math.floor(totalMinutes / yearlyAchieved)) * 60)} `;
+
+  // ----DATA FOR MONTHS CHARTS ----
   // clear data from previous year
   distancesMonths.length = 0;
   runsPerMonth.length = 0;
@@ -252,7 +252,8 @@ function processData() {
     monthLabels
   );
 
-  let distMonthDone = distancesMonths[dateNow.getMonth()]; // total distance current month
+  // total distance current month
+  let distMonthDone = distancesMonths[dateNow.getMonth()];
 
   distMonthTarget =
     (yearlyTarget - (yearlyAchieved - distMonthDone)) /
@@ -277,7 +278,7 @@ function processData() {
   dataMonthProgress.push(procMonthDone);
   dataMonthProgress.push(procMonthRemain);
 
-  // --------------------DATA FOR WEEKS CHARTS --------------------
+  // ----DATA FOR WEEKS CHARTS ----
   // clear data from previous year
   distancesWeeks.length = 0;
 
@@ -331,9 +332,9 @@ function processData() {
   dataWeekProgress.push(procWeekRemain);
 }
 
-// -----------------GENERATE CHARTS ----------------
+// -GENERATE CHARTS 
 function generateCharts() {
-  // ----------------MONTHLY DISTANCES - COLUMN CHART------------------
+  // MONTHLY DISTANCES - COLUMN CHART--
   // empty the container chart to create a new one with a new width
   document.getElementById("month-distances-svg").innerHTML = "";
 
@@ -397,7 +398,7 @@ function generateCharts() {
     })
     // color month columns according to performance
     .attr("fill", function (d) {
-      if (d[0] == 0) {
+      if (d[0] === 0) {
         return "#D1D1D1";
       } else if (d[0] < 80) {
         return "#09990C"; // changed to using the same color
@@ -442,7 +443,7 @@ function generateCharts() {
       return "translate(" + xText + ", " + yText + ") rotate(-90)";
     });
 
-  // ----------------WEEKLY DISTANCES - COLUMN CHART------------------
+  // WEEKLY DISTANCES - COLUMN CHART--
 
   // empty the container to create a new one with a new width
   document.getElementById("week-distances-svg").innerHTML = "";
@@ -507,7 +508,7 @@ function generateCharts() {
     })
     // color week columns according to performance
     .attr("fill", function (d) {
-      if (d[0] == 0) {
+      if (d[0] === 0) {
         return "#D1D1D1";
       } else if (d[0] < 19) {
         return "#09990C";
@@ -617,7 +618,7 @@ function generateCharts() {
     })
     // color week columns according to performance
     .attr("fill", function (d) {
-      if (d[0] == 0) {
+      if (d[0] === 0) {
         return "#D1D1D1";
       } else if (d[0] < 19) {
         return "#09990C";
@@ -664,7 +665,7 @@ function generateCharts() {
       return "translate(" + xText + ", " + yText + ")";
     });
 
-  // -----------------CALENDAR VIEW-----------------
+  // -CALENDAR VIEW-
   // empty the container to create a new chart with a new width
   document.getElementById("daily-streak-svg").innerHTML = "";
 
@@ -740,6 +741,7 @@ function generateCharts() {
     .selectAll(".day")
     .data(function (d) {
       return d3.timeDays(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+      //   return d3.timeDays(new Date(d, 0, 1), new Date(d, 6, 1));
     }) // return all the dates in between two given dates
     .enter()
     .append("rect")
@@ -770,6 +772,7 @@ function generateCharts() {
     .selectAll("g.month-day-streak")
     .data(function (d) {
       return d3.timeDays(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+      // return d3.timeDays(new Date(d, 0, 1), new Date(d, 6, 1));
     }) // return all the dates in between two given dates
     .enter()
     .append("text")
@@ -818,7 +821,7 @@ function generateCharts() {
   // place day of week to the left of the chart
   svgDay
     .selectAll("g.week-day")
-    .data(abbrWeekDays)
+    .data(abbrNameWeekDays)
     .enter()
     .append("text")
     .text(function (d) {
@@ -851,6 +854,7 @@ function generateCharts() {
     .selectAll(".month-group")
     .data(function (d) {
       return d3.timeMonths(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+      //   return d3.timeMonths(new Date(d, 0, 1), new Date(d, 6, 1));
     })
     .enter()
     .append("path")
@@ -935,7 +939,7 @@ function generateCharts() {
     );
   }
 
-  // --------------------PROGRESS DONUT CHARTS--------------------
+  // ----PROGRESS DONUT CHARTS----
   // empty the container to create a new chart with a new width
   document.getElementById("yearly-progress-svg").innerHTML = "";
 
@@ -977,7 +981,7 @@ function generateCharts() {
     .append("path")
     // color percentages
     .attr("fill", function (d, i) {
-      if (i == 0) {
+      if (i === 0) {
         return "#09990C";
       } else {
         return "#D1D1D1";
@@ -998,7 +1002,7 @@ function generateCharts() {
     .attr("x", xPercent)
     .attr("y", yPercent + 10)
     .text((procYearDone * 100).toFixed(0) + " %");
-  // -------------------------------------------------------------------------------
+  // ---------------
 
   // MONTHLY PROGRESS DONUT CHART
 
@@ -1019,7 +1023,7 @@ function generateCharts() {
     .attr("viewBox", "0 0 150 150"); // needed to resize chart with window
 
   // set up groups
-  var arcsM = svgM
+  let arcsM = svgM
     .selectAll("g.arc")
     .data(pieM(dataMonthProgress))
     .enter()
@@ -1035,7 +1039,7 @@ function generateCharts() {
     .append("path")
     // color percentages
     .attr("fill", function (d, i) {
-      if (i == 0) {
+      if (i === 0) {
         return "#09990C";
       } else {
         return "#D1D1D1";
@@ -1056,7 +1060,7 @@ function generateCharts() {
     .attr("x", xPercent)
     .attr("y", yPercent + 10)
     .text((procMonthDone * 100).toFixed(0) + " %");
-  // -------------------------------------------------------------------------------
+  // ---------------
 
   // WEEKLY PROGRESS DONUT CHART
 
@@ -1077,7 +1081,7 @@ function generateCharts() {
     .attr("viewBox", "0 0 150 150"); // needed to resize chart with window
 
   // set up groups
-  var arcsD = svgD
+  let arcsD = svgD
     .selectAll("g.arc")
     .data(pieD(dataWeekProgress))
     .enter()
@@ -1093,7 +1097,7 @@ function generateCharts() {
     .append("path")
     // color percentages
     .attr("fill", function (d, i) {
-      if (i == 0) {
+      if (i === 0) {
         return "#09990C";
       } else {
         return "#D1D1D1";
@@ -1116,7 +1120,7 @@ function generateCharts() {
     .text((procWeekDone * 100).toFixed(0) + " %");
 }
 
-// -----------------GENERATE TABLES ----------------
+// -GENERATE TABLES 
 function generateTable() {
   let divNewTable = document.getElementById("table-data"); // table container
   divNewTable.innerHTML = ""; // empty the table before calling update
@@ -1218,12 +1222,12 @@ function sortTableNumber(n) {
       shouldSwitch = false;
       let x = rows[i].getElementsByTagName("TD")[n];
       let y = rows[i + 1].getElementsByTagName("TD")[n];
-      if (dir == "asc") {
+      if (dir === "asc") {
         if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
           shouldSwitch = true;
           break;
         }
-      } else if (dir == "desc") {
+      } else if (dir === "desc") {
         if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
           shouldSwitch = true;
           break;
@@ -1236,7 +1240,7 @@ function sortTableNumber(n) {
       switching = true;
       switchcount++;
     } else {
-      if (switchcount == 0 && dir == "asc") {
+      if (switchcount === 0 && dir === "asc") {
         dir = "desc";
         switching = true;
       }
@@ -1261,12 +1265,12 @@ function sortTableDate(n) {
       shouldSwitch = false;
       let x = rows[i].getElementsByTagName("TD")[n];
       let y = rows[i + 1].getElementsByTagName("TD")[n];
-      if (dir == "asc") {
+      if (dir === "asc") {
         if (Date.parse(x.innerHTML) > Date.parse(y.innerHTML)) {
           shouldSwitch = true;
           break;
         }
-      } else if (dir == "desc") {
+      } else if (dir === "desc") {
         if (Date.parse(x.innerHTML) < Date.parse(y.innerHTML)) {
           shouldSwitch = true;
           break;
@@ -1279,7 +1283,7 @@ function sortTableDate(n) {
       switching = true;
       switchcount++;
     } else {
-      if (switchcount == 0 && dir == "asc") {
+      if (switchcount === 0 && dir === "asc") {
         dir = "desc";
         switching = true;
       }
@@ -1311,12 +1315,12 @@ function sortTablePace(n) {
       let yY = y.innerHTML.split(":"); // split mm:ss at ":" in an array
       let ySec = yY[0] * 60 + yY[1]; // count total of seconds per km
 
-      if (dir == "asc") {
+      if (dir === "asc") {
         if (parseFloat(xSec) > parseFloat(ySec)) {
           shouldSwitch = true;
           break;
         }
-      } else if (dir == "desc") {
+      } else if (dir === "desc") {
         if (parseFloat(xSec) < parseFloat(ySec)) {
           shouldSwitch = true;
           break;
@@ -1329,7 +1333,7 @@ function sortTablePace(n) {
       switching = true;
       switchcount++;
     } else {
-      if (switchcount == 0 && dir == "asc") {
+      if (switchcount === 0 && dir === "asc") {
         dir = "desc";
         switching = true;
       }
